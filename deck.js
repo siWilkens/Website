@@ -61,7 +61,7 @@ class Deck {
      */
     removeCard(card){
         return this.cards.splice(this.cards.findIndex(x => 
-            (x.getSuit() == card.getSuit() && x.getValue() == card.getValue())), 1)
+            (x.suit == card.suit && x.value == card.value)), 1)
     }
 
     /**
@@ -72,11 +72,11 @@ class Deck {
         var array = this.cards
         var map = array.map(function(a) {
             return array.filter(function(b) {
-                return a.getSuit() === b.getSuit();
+                return a.suit === b.suit;
             }).length;
         });
     
-        return this.cards[map.indexOf(Math.max.apply(null, map))].getSuit();
+        return this.cards[map.indexOf(Math.max.apply(null, map))].suit;
     }
 
     /**
