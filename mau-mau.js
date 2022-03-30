@@ -54,16 +54,6 @@ import {Deck, Card} from "./deck.js"
 
         window.startPlayer = Math.floor(Math.random() * numberOfPlayers)
         
-        console.log(startPlayer)
-        console.log(playerDeck)
-        console.log(computer1Deck)
-        console.log(computer2Deck)
-        console.log(computer3Deck)
-        console.log(computer4Deck)
-        console.log(computer5Deck)
-        console.log(discardDeck)
-        console.log(drawDeck)
-        
         if(startPlayer == 0){
             $(window).on("load", addClickForPlayerTurn())
         } else {
@@ -97,7 +87,6 @@ import {Deck, Card} from "./deck.js"
         if(drawDeck.cards.length == 0){
             shuffleDiscardDeck()
         }
-        specialCardValue = 0
         
     }
 
@@ -125,6 +114,9 @@ import {Deck, Card} from "./deck.js"
                 $(`drawDeck img`) //toDo draw deck red
             }
         } else if(checkCardPlayable(card)) {
+            if(card.value == 7){
+                cardsToDraw +=2
+            }
             return playPlayerCard(card)
         }
             //toDo print error 
@@ -169,7 +161,9 @@ import {Deck, Card} from "./deck.js"
             } else {
                 addClickForPlayerTurn()
             }
+            
         }, 3000 * (numberOfPlayers - startNumber))
+       
     }
 
     /**
@@ -193,6 +187,9 @@ import {Deck, Card} from "./deck.js"
                 }
             } else {
                 if(checkCardPlayable(card)){ 
+                    if(card.value == 7){
+                        cardsToDraw +=2
+                    }
                     playComputerCard(computerNumber, card)
                     return
                 }
@@ -207,8 +204,6 @@ import {Deck, Card} from "./deck.js"
             specialCardValue = 0
             return
         }
-        cardsToDraw = 0
-        specialCardValue = 0
         drawCard(computerNumber)
         printNumberOfCards(computerNumber)
     }
@@ -390,8 +385,9 @@ import {Deck, Card} from "./deck.js"
                     cardsToDraw--
                 }
             } else {
-            drawCard()
+                drawCard()
             }
+            specialCardValue = 0
             printPlayerDeck()
             doComputerTurns(1)
         })
@@ -429,7 +425,6 @@ $(document).ready(() => {
     hideWinningScreen()
     var deck = new Deck()
     deck.newDeck()
-    console.log(deck)
     var card 
     for(var index in deck.cards){
         card = deck.cards[index]
