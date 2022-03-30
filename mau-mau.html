@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Mau-Mau</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='mau-mau.css'>
+    <script src="jquery.js"></script>
+    <script src='mau-mau.js' type="module"></script>
+</head>
+<body>
+    <div id="options">
+        <table id="optionsTable">
+        <tr>
+            <td>
+                <label>Number of Players:</label>
+            </td>
+             <td>
+                 <select id="numberOfPlayers">
+                    <option value="2" >2 Player</option>
+                    <option value="3" >3 Player</option>
+                    <option value="4" >4 Player</option>
+                    <option value="5" >5 Player</option>
+                    <option value="6" >6 Player</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Number of Starting Cards:</label>
+            </td>
+            <td>
+                <input type="number" id="numberOfStartingCards" min="1" value="6">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select id="addCardValue">
+                    <option value="2" >2</option>
+                    <option value="3" >3</option>
+                    <option value="4" >4</option>
+                    <option value="5" >5</option>
+                    <option value="6" >6</option>
+                    <option value="7" >7</option>
+                    <option value="8" >8</option>
+                    <option value="9" >9</option>
+                    <option value="10">10</option>                
+                    <option value="j" >Jack</option>
+                    <option value="q" >Queen</option>
+                    <option value="k" >King</option>
+                    <option value="a" >Ace</option>
+                </select>
+                <select id="addCardSuit">
+                    <option value="h">of Hearts</option>
+                    <option value="d">of Diamonds</option>
+                    <option value="c">of Clubs</option>
+                    <option value="s">of Spades</option> 
+                </select>
+            </td>
+            <td>
+                <button id="addCard">Add Card</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Playing Deck:</label>
+            </td>
+            <td>
+                <select id="cardDeck"></select>
+            </td>
+            <td>
+                <button id="removeCard">Remove Card</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="startGame">Start Game</button>
+            </td>
+            <td>
+                <label id="error"></label>
+            </td>
+        </tr>
+        </table>
+    </div>
+    <div id="selectSuit">
+        <span id="h" class="red">♥</span>
+        <span id="d" class="red">♦</span>
+        <span id="c" class="black">♣</span>
+        <span id="s" class="black">♠</span>
+    </div>
+    <div id="winningScreen">You won the Game</div>
+    <div id="container">
+        <div id="discardDeck">
+        </div>
+        <div id="drawDeck">
+            <img class="card" src="PNG-cards/back.png">
+            <div class="circle"></div>
+        </div>
+    </div> 
+    <div id="player">
+    </div>
+    <div id="computer1">
+        <img class="card" src="PNG-cards/back.png">
+        <div class="circle"></div>
+    </div>
+    <div id="computer2">
+        <img class="card" src="PNG-cards/back.png">
+        <div class="circle"></div>
+    </div>
+    <div id="computer3">
+        <img class="card" src="PNG-cards/back.png">
+        <div class="circle"></div>
+    </div>
+    <div id="computer4">
+        <img class="card" src="PNG-cards/back.png"> 
+        <div class="circle"></div>
+    </div>
+    <div id="computer5">
+        <img class="card" src="PNG-cards/back.png">
+        <div class="circle"></div>
+    </div>
+</body>
+</html>

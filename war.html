@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Black Jack</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='war.css'>
+    <script src="jquery.js"></script>
+    <script type="module" src='war.js'></script>
+</head>
+<body>
+    <div id="enemy">
+        <div id="enemyDeck">
+            <img class="card" src="PNG-cards/back.png">
+            <div class="circle"></div>
+        </div>
+        <label id="enemyText">Enemy Player Deck:</label>
+        <div id="enemyDiscard">
+            <img class="card discard" src="PNG-cards/back.png">
+        </div>
+    </div>
+    <button id="play"> Play</button>
+    <label id="cardsInWarText">Cards in war:</label>
+    <div id="cardsInWar">
+        <img class="card" src="PNG-cards/back.png">
+        <div class="circle"></div>
+    </div>
+    <div id="player">
+        <div id="playerDeck">
+            <img class="card" src="PNG-cards/back.png">
+            <div class="circle"></div>
+        </div>
+        <label id="playerText">Your Deck:</label>
+        <div id="playerDiscard">
+            <img class="card discard" src="PNG-cards/back.png">
+        </div>
+    </div>
+    <div id="winningScreen">You won the Game</div>
+</body>
+</html>

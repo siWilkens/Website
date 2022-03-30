@@ -1,0 +1,54 @@
+body{
+    width: 100%;
+    height: 100%;
+    margin:0;
+}
+
+ul{
+    margin:0px;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
+button{
+    width: 100px;
+    margin: 5px 20px;
+    height: 30px;
+    color: #20207F;
+    border-radius: 5%;
+    background-color: #F64C72;
+    font-weight: bold;
+}
+
+object{
+    width: 100%;
+    height: 100%;
+}
+
+#mau-mau{
+    margin-top: 20px;
+}
+
+#sidebar{
+    height: 100vh;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    background-color: #20207F;
+    overflow-x: hidden;
+    padding-left: 10px;
+}
+
+#sidebar button:hover {
+    background-color: #FF6A90;
+  }
+
+#content{
+    height: 100vh;
+    background-color: #659DBD;
+    background-image: linear-gradient(to right, #20207F , #659DBD 0.2%);
+    margin:0;
+    margin-left: 170px;
+    top:0;
+    padding: 0px 10px;
+}

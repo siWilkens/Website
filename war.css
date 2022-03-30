@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    color: #20207F;
+}
+
+.card {
+    position: relative;
+    height: 200px;
+    border-radius: 5%;
+}
+
+.discard {
+    background-color: white;
+    filter:brightness(100);
+}
+
+#cardsInWar {
+    position:absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%,-50%);
+}
+
+#cardsInWarText {
+    position:absolute;
+    font-size: 50px;
+    top: 30%;
+    left: 75%;
+    transform: translate(-50%,-50%);
+
+}
+
+#enemy {
+    position:absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    min-width: 300px;
+}
+
+#enemyText {
+    position:absolute;
+    font-size: 30px;
+    left: 10%;
+    transform: translate(-50%,300%);
+}
+
+#enemyDeck {
+    position:absolute;
+    left: 10%;
+    transform: translate(-50%,-50%);
+}
+
+#enemyDiscard {
+    position:absolute;
+    left: 90%;
+    transform: translate(-50%,-50%);
+}
+
+#player {
+    position:absolute;
+    left: 50%;
+    bottom: 20%;
+    transform: translate(-50%,-50%);
+    min-width: 300px;
+}
+
+#playerText {
+    position:absolute;
+    font-size: 30px;
+    left: 10%;
+    transform: translate(-50%,-400%);
+}
+
+#playerDeck {
+    position:absolute;
+    left: 10%;
+    transform: translate(-50%,-50%);
+}
+
+#playerDiscard {
+    position:absolute;
+    left: 90%;
+    transform: translate(-50%,-50%);
+}
+
+#play {  
+    font-size: 30px;
+    font-weight: bold;
+    height: 100px;
+    width: 100px;
+    color: #242582;
+    border: 5px solid #242582;
+    background-color: #F64C72;
+    border-radius: 100%;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#play:hover {
+    background-color: #FFACA2;
+}
+
+#winningScreen {
+    position: absolute;
+    background-color: #D9B3CE;
+    z-index: 100;
+    border: 10px  double black;
+    border-radius: 0%;
+    font-size: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.circle {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%,46%);
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 150%;
+    background-color: #D9B3CE;
+    border: 5px solid #242582;
+}
