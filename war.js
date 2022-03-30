@@ -16,6 +16,10 @@ const VALUE_MAP = {
     "a": 14
   }
 
+/**
+ * Starts the round by initializes and shuffles the deck and splits it up to the enemy and the player.
+ *  Then prints all information to the HTML-site and adds the clickEventListener
+ */
 function start() {
     var deck = new Deck()
     deck.newDeck()
@@ -31,6 +35,9 @@ function start() {
     addClickToPlayButton()
 }
 
+/**
+ * Plays on card of each deck and compares who won
+ */
 function playCards(){
     showRoundWon()
     var playerCard = playerDeck.shiftCard()
@@ -49,7 +56,6 @@ function playCards(){
             enemyDeck.pushCards(cardsInWar)
             cardsInWar = []
             showRoundWon("enemy")
-            
         } else {
             cardsInWar.push(playerCard, enemyCard)
             for(let i = 0; i < 3; i++) {
@@ -72,10 +78,20 @@ function playCards(){
 
 }
 
+/**
+ * Compares the two card Values
+ * @param {Card} firstCard
+ * @param {Card} secondCard
+ * @returns {boolean} firstCard > secondCard
+ */
 function compareCards(firstCard, secondCard) {
     return VALUE_MAP[firstCard.value] > VALUE_MAP[secondCard.value]
 }
 
+/**
+ * Shows to play Button if player, enemy or nobody won
+ * @param {String} roundWon player of player has won, enemy if enemy has won
+ */
 function showRoundWon(roundWon) {
     if(roundWon == "player"){
         $(`#play`).css({border : '5px solid green'})
@@ -105,11 +121,17 @@ function hideWinningScreen() {
   $(`#winningScreen`).hide();
 }
 
+/**
+* Prints the number of cards in player and enemy deck
+*/
 function printNumberOfCards() {
     $(`#playerDeck > .circle`).text(playerDeck.numberOfCards)
     $(`#enemyDeck > .circle`).text(enemyDeck.numberOfCards)
 }
 
+/**
+* Prints the two cards to the player and enemy dicard
+*/
 function printCards(playerCard, enemyCard){
     $(`#playerDiscard img`).remove()
     $(`#playerDiscard`).append(`<img id="${playerCard.value+ playerCard.suit}"`+
@@ -120,10 +142,16 @@ function printCards(playerCard, enemyCard){
         `class="card" src="PNG-cards/${enemyCard.value + enemyCard.suit}.png">`)
 }
 
+/**
+* Prints number of cards in war
+*/
 function printCardsInWar() {
     $(`#cardsInWar .circle`).text(cardsInWar.length)
 }
 
+/**
+* Clears player and enemy card
+*/
 function clearCards() {
     $(`#playerDiscard img`).remove()
     $(`#playerDiscard`).append(`<img class="card discard" src="PNG-cards/back.png">`)
@@ -132,23 +160,31 @@ function clearCards() {
     $(`#enemyDiscard`).append(`<img class="card discard" src="PNG-cards/back.png">`)
 }
 
+/**
+* Adds clickEventListener to play button
+*/
 function addClickToPlayButton() {
     $(`#play`).click(() => {
         playCards()
     })
 }
 
+/**
+* Removes clickEventListener from play button
+*/
 function removeClickToPlayButton() {
     $(`#play`).off()
 }
 
+/**
+* Starts game and hides winnigScreen onClick
+*/
 $(document).ready(() => {
     hideWinningScreen()
-    printCardsInWar()
+    printCardsInWar()  
+    start()
     $(`#winningScreen`).click(() => {
         hideWinningScreen()
         start()
     })
 })
-
-start()

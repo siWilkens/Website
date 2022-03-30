@@ -29,6 +29,7 @@ import {Deck, Card} from "./deck.js"
         init()
         window.numberOfPlayers = numberOfPlayers
         window.drawDeck = startDeck;
+        window.oldDeck = startDeck
         drawDeck.shuffle()
         for(var i = 0; i < numberOfStartingCards; i++){
             switch (numberOfPlayers) {
@@ -55,7 +56,7 @@ import {Deck, Card} from "./deck.js"
         window.startPlayer = Math.floor(Math.random() * numberOfPlayers)
         
         if(startPlayer == 0){
-            $(window).on("load", addClickForPlayerTurn())
+            addClickForPlayerTurn()
         } else {
             doComputerTurns(startPlayer)
         }
@@ -314,7 +315,8 @@ import {Deck, Card} from "./deck.js"
         $(`.circle`).text("")
         $(`#discardDeck img`).remove()
         $(`#player img`).remove()
-        $(`#options`).show();
+        $(`#options`).show()
+        deck.newDeck()
     }
 
     /**
@@ -401,6 +403,10 @@ import {Deck, Card} from "./deck.js"
         $(`#drawDeck img`).off(`click`)
     }
 
+    /**
+     * Adds the clickEventListener to selectSuit and plays the selected jack
+     * @param {Card} card selected jack
+     */
     function addClickForSelectSuit(card){
         $(`span`).click((e) => {
             var cardSuit = e.currentTarget.id
@@ -412,6 +418,9 @@ import {Deck, Card} from "./deck.js"
         })
     }
 
+    /**
+     * Removes the clickEventListener from selectSuit
+     */
     function removeClickForSelectSuit(){
         $(`selectSuit span`).off(`click`)
     }
@@ -423,7 +432,7 @@ import {Deck, Card} from "./deck.js"
 $(document).ready(() => {
     hideSelectSuit()
     hideWinningScreen()
-    var deck = new Deck()
+    window.deck = new Deck()
     deck.newDeck()
     var card 
     for(var index in deck.cards){
@@ -455,7 +464,7 @@ $(document).ready(() => {
         var startCards = $(`#numberOfStartingCards`).val()
         if(deck.numberOfCards > player * startCards){
             hideOptions()
-            start(player, startCards, deck) 
+            start(player, startCards, deck)
         } else {
             $(`#error`).text("Not enought cards to start")
         }
