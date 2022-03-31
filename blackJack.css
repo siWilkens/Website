@@ -65,10 +65,13 @@ body {
 }
 
 #dealer {
+    --gridColumns: 2;
     position:absolute;
     top: 20%;
     left: 50%;
     transform: translate(-50%,-50%);
+    display: grid;
+    grid-template-columns: repeat(var(--gridColumns),60px);
 }
 
 #player {
