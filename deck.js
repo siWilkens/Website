@@ -3,7 +3,7 @@ const VALUES = ["a", "2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k"
 
 class Deck {
     constructor() {  
-        this.cards = new Array();
+        this.cards = new Array()
     }
 
     get numberOfCards() {
@@ -23,43 +23,51 @@ class Deck {
     }
 
     /**
-     * removes the first card
+     * Shifts the first card
      * @returns {Card} removed card
      */
-    shiftCard(){
+    shiftCard() {
         return this.cards.shift()
     }
 
     /**
-     * adds the card before all other cards
+     * Unshifts the card before all other cards
      */
-    unshiftCard(card){
+    unshiftCard(card) {
         this.cards.unshift(card)
     }
 
 
     /**
-     * Addes the card to the deck
+     * Adds the card to the deck
      * @param  {Card} card Card to add to the deck
      */
-     pushCard(card){
+     pushCard(card) {
         this.cards.push(card)
     }
 
     /**
-     * adds the card last
+     * Pops the last card
+     * @return {Card} removed card
+     */
+    popCard() {
+        return this.cards.pop()
+    }
+
+    /**
+     * Adds the card last
      * @param {Card} card card to add
      */
-    pushCards(cards){
+    pushCards(cards) {
         this.cards.push.apply(this.cards, cards)
     }
 
     /**
-     * removes the last card
+     * removes the card
      * @param {Card} card card to remove
      * @return {Card} removed card
      */
-    removeCard(card){
+    removeCard(card) {
         return this.cards.splice(this.cards.findIndex(x => 
             (x.suit == card.suit && x.value == card.value)), 1)
     }
@@ -68,7 +76,7 @@ class Deck {
      * determine the most occuring suit
      * @returns the suit that occures most
      */
-    getMostOccuringSuit(){
+    getMostOccuringSuit() {
         var array = this.cards
         var map = array.map(function(a) {
             return array.filter(function(b) {
@@ -82,12 +90,27 @@ class Deck {
     /**
      * creates a new Deck with every card once
      */
-    newDeck() {
+    new52Deck() {
         this.cards = SUITS.flatMap(suit => {
             return VALUES.map(value => {
                 return new Card(suit, value)
             })
         })
+    }
+
+    /**
+     * creates a new Deck with every card 6 times
+     */
+    new312Deck() {
+        this.cards = new Array()
+        for(var i = 0; i < 6; i++){
+            this.pushCards( SUITS.flatMap(suit => {
+                return VALUES.map(value => {
+                    return new Card(suit, value)
+                })
+            })
+            )
+        }
     }
     
 }

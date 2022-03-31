@@ -9,6 +9,61 @@ body {
     border-radius: 5%;
 }
 
+#dealCards { 
+    font-size: 30px;
+    font-weight: bold;
+    height: 120px;
+    width: 120px;
+    color: #242582;
+    border: 5px solid #242582;
+    background-color: #F64C72;
+    border-radius: 100%;
+    position:absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#playerButtonDiv {
+    position:absolute;
+    top: 63%;
+    left: 50%;
+    min-width: 300px;
+    transform: translate(-50%,-50%);
+}
+
+.playerButton {
+    width: 100px;
+    margin: 5px 20px;
+    height: 30px;
+    color: #20207F;
+    border-radius: 5%;
+    background-color: #F64C72;
+    font-weight: bold;
+}
+
+.playerButton:hover:enabled {
+    background-color: #FF6A90;
+}
+
+#hit {
+    position:absolute;
+    bottom: 30%;
+    left: 13%;
+    transform: translate(-50%,-50%);
+}
+
+#stand {
+    position:absolute;
+    bottom: 30%;
+    right: -20%;
+    transform: translate(-50%,-50%);
+}
+
+#dealCards:hover:enabled {
+    background-color: #FF6A90;
+}
+
 #dealer {
     position:absolute;
     top: 20%;
@@ -17,8 +72,25 @@ body {
 }
 
 #player {
+    --gridColumns: 2;
     position:absolute;
+    bottom: 20%;
     left: 50%;
-    bottom: -10%;
+    width: auto;
+    max-height: 200px;
+    transform: translate(-50%,50%);
+    display: grid;
+    grid-template-columns: repeat(var(--gridColumns),60px);
+}
+
+#winningScreen {
+    position: absolute;
+    background-color: #D9B3CE;
+    z-index: 100;
+    border: 10px  double black;
+    border-radius: 0%;
+    font-size: 50px;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%,-50%);
 }

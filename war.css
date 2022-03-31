@@ -99,8 +99,8 @@ body {
     transform: translate(-50%,-50%);
 }
 
-#play:hover {
-    background-color: #FFACA2;
+#play:hover:enabled {
+    background-color: #FF6A90;
 }
 
 #winningScreen {

@@ -155,7 +155,7 @@ import {Deck, Card} from "./deck.js"
             timeouts.push(setTimeout(showActivePlayer,3000*(i-startNumber),i))
             timeouts.push(setTimeout(computersTurn, 3000 * (i+1-startNumber), i))
         } 
-        setTimeout(() => {
+        timeouts.push(setTimeout(() => {
             if (specialCardValue == 8){
                 specialCardValue = 0
                 doComputerTurns(1)
@@ -164,6 +164,7 @@ import {Deck, Card} from "./deck.js"
             }
             
         }, 3000 * (numberOfPlayers - startNumber))
+        )
        
     }
 
@@ -316,7 +317,7 @@ import {Deck, Card} from "./deck.js"
         $(`#discardDeck img`).remove()
         $(`#player img`).remove()
         $(`#options`).show()
-        deck.newDeck()
+        deck.new52Deck()
     }
 
     /**
@@ -433,7 +434,7 @@ $(document).ready(() => {
     hideSelectSuit()
     hideWinningScreen()
     window.deck = new Deck()
-    deck.newDeck()
+    deck.new52Deck()
     var card 
     for(var index in deck.cards){
         card = deck.cards[index]

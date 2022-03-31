@@ -7,11 +7,17 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='blackJack.css'>
     <script src="jquery.js"></script>
-    <script src='blackJack.js'></script>
+    <script type="module" src='blackJack.js'></script>
 </head>
 <body>
     <div id="dealer">
         <img class="card" src="PNG-cards/back.png">
+    </div>
+    <button id="dealCards">Deal Cards</button>
+    <div id="winningScreen">You won the Game</div>
+    <div id="playerButtonDiv">  
+        <button id="hit" class="playerButton">Hit</button>
+        <button id="stand" class="playerButton">Stand</button>
     </div>
     <div id="player">
         <img class="card" src="PNG-cards/back.png">

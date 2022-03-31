@@ -22,7 +22,7 @@ const VALUE_MAP = {
  */
 function start() {
     var deck = new Deck()
-    deck.newDeck()
+    deck.new52Deck()
     deck.shuffle()
     window.playerDeck = new Deck()
     window.enemyDeck = new Deck()
@@ -39,12 +39,12 @@ function start() {
  * Plays on card of each deck and compares who won
  */
 function playCards(){
+    removeClickToPlayButton()
     showRoundWon()
     var playerCard = playerDeck.shiftCard()
     var enemyCard = enemyDeck.shiftCard()
     printCards(playerCard, enemyCard)
     printNumberOfCards()
-    removeClickToPlayButton()
     setTimeout(() => {
         if(compareCards(playerCard, enemyCard)){
             cardsInWar.push(playerCard, enemyCard)
@@ -164,6 +164,7 @@ function clearCards() {
 * Adds clickEventListener to play button
 */
 function addClickToPlayButton() {
+    $(`#play`).prop(`disabled`, false)
     $(`#play`).click(() => {
         playCards()
     })
@@ -173,6 +174,7 @@ function addClickToPlayButton() {
 * Removes clickEventListener from play button
 */
 function removeClickToPlayButton() {
+    $(`#play`).prop(`disabled`, true)
     $(`#play`).off()
 }
 
@@ -181,7 +183,7 @@ function removeClickToPlayButton() {
 */
 $(document).ready(() => {
     hideWinningScreen()
-    printCardsInWar()  
+    printCardsInWar() 
     start()
     $(`#winningScreen`).click(() => {
         hideWinningScreen()
