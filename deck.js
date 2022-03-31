@@ -6,7 +6,7 @@ class Deck {
         this.cards = new Array()
     }
 
-    get numberOfCards() {
+    get length() {
         return this.cards.length
     }
 
@@ -14,7 +14,7 @@ class Deck {
      * Shuffles the deck
      */
     shuffle() {
-        for (let i = this.numberOfCards - 1; i > 0; i--) {
+        for (let i = this.length - 1; i > 0; i--) {
             const newIndex = Math.floor(Math.random() * (i + 1))
             const oldValue = this.cards[newIndex]
             this.cards[newIndex] = this.cards[i]

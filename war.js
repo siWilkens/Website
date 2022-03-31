@@ -27,8 +27,8 @@ function start() {
     window.playerDeck = new Deck()
     window.enemyDeck = new Deck()
     window.cardsInWar = []
-    playerDeck.pushCards(deck.cards.slice(0, deck.numberOfCards/2))
-    enemyDeck.pushCards(deck.cards.slice(deck.numberOfCards/2, deck.numberOfCards))
+    playerDeck.pushCards(deck.cards.slice(0, deck.length/2))
+    enemyDeck.pushCards(deck.cards.slice(deck.length/2, deck.length))
     printNumberOfCards()
     printCardsInWar()
     showRoundWon()
@@ -66,9 +66,9 @@ function playCards(){
         }
         printCardsInWar()
         printNumberOfCards()
-        if(playerDeck.numberOfCards == 0){
+        if(playerDeck.length == 0){
             showWinningScreen(false)
-        } else if (enemyDeck.numberOfCards == 0) {
+        } else if (enemyDeck.length == 0) {
             showWinningScreen(true)
         } else {
             addClickToPlayButton()
@@ -125,8 +125,8 @@ function hideWinningScreen() {
 * Prints the number of cards in player and enemy deck
 */
 function printNumberOfCards() {
-    $(`#playerDeck > .circle`).text(playerDeck.numberOfCards)
-    $(`#enemyDeck > .circle`).text(enemyDeck.numberOfCards)
+    $(`#playerDeck > .circle`).text(playerDeck.length)
+    $(`#enemyDeck > .circle`).text(enemyDeck.length)
 }
 
 /**

@@ -43,12 +43,12 @@ import {Deck, Card} from "./deck.js"
         }
         discardDeck.pushCard(drawDeck.shiftCard())
         switch (numberOfPlayers) {
-            case 6:  $(`#computer5 .circle`).text(computer5Deck.numberOfCards)
-            case 5:  $(`#computer4 .circle`).text(computer4Deck.numberOfCards)
-            case 4:  $(`#computer3 .circle`).text(computer3Deck.numberOfCards)
-            case 3:  $(`#computer2 .circle`).text(computer2Deck.numberOfCards)
-            case 2:  $(`#computer1 .circle`).text(computer1Deck.numberOfCards)
-            $(`#drawDeck .circle`).text(drawDeck.numberOfCards)
+            case 6:  $(`#computer5 .circle`).text(computer5Deck.length)
+            case 5:  $(`#computer4 .circle`).text(computer4Deck.length)
+            case 4:  $(`#computer3 .circle`).text(computer3Deck.length)
+            case 3:  $(`#computer2 .circle`).text(computer2Deck.length)
+            case 2:  $(`#computer1 .circle`).text(computer1Deck.length)
+            $(`#drawDeck .circle`).text(drawDeck.length)
         }
         printDiscardDeck();
         printPlayerDeck();
@@ -253,7 +253,7 @@ import {Deck, Card} from "./deck.js"
      * Prints number of cards in drawdeck
      */
     function printDrawDeck() {
-        $(`#drawDeck .circle`).text(drawDeck.numberOfCards)
+        $(`#drawDeck .circle`).text(drawDeck.length)
     }
 
     /**
@@ -289,7 +289,7 @@ import {Deck, Card} from "./deck.js"
      * @param  {Number} computerNumber number of the Computer.
      */
     function printNumberOfCards(computerNumber){
-        $(`#computer${computerNumber}> .circle`).text(getComputerDeck(computerNumber).numberOfCards)
+        $(`#computer${computerNumber}> .circle`).text(getComputerDeck(computerNumber).length)
     }
 
     /**
@@ -463,7 +463,7 @@ $(document).ready(() => {
     $(`#startGame`).click(() => {
         var player = parseInt($(`#numberOfPlayers option:selected`).val())
         var startCards = $(`#numberOfStartingCards`).val()
-        if(deck.numberOfCards > player * startCards){
+        if(deck.length > player * startCards){
             hideOptions()
             start(player, startCards, deck)
         } else {

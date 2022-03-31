@@ -17,30 +17,41 @@ const VALUE_MAP = {
   }
 
 /**
-* Initiates the global variables and adds clickEventListener to playerButtons
+* Initiates the global variables and adds clickEventListener to dealCardsButton
 */
-function start() {
-    hideWinningScreen()
+function init() {
     window.startDeck = new Deck()
-    startDeck.new312Deck()
-    startDeck.shuffle()
     window.playerCards = new Deck()
     window.dealerCards = new Deck()
+    startDeck.new312Deck()
+    startDeck.shuffle()
+    hideWinningScreen()
 }
 
 /**
-* Deals two cards to each player and dealer
+* Starts new round
+*/
+function start() {
+}
+
+/**
+* Starts round by dealing two cards to each player and dealer
 */
 function dealCards() {
-    addClickToPlayerButtons()
+    playerCards = new Deck()
+    dealerCards = new Deck()
     playerCards.pushCard(startDeck.popCard())
     dealerCards.pushCard(startDeck.popCard())
     playerCards.pushCard(startDeck.popCard())
     dealerCards.pushCard(startDeck.popCard())
     printPlayerCards()
     printDealerCards(false)
-    console.log(playerCards)
-    console.log(dealerCards)
+    if(getSumOfValues(playerCards) == 21){
+        console.log("player Blackjack")
+            dealerTurn()
+    } else {
+        addClickToPlayerButtons()
+    }
 }
 
 /**
@@ -49,7 +60,7 @@ function dealCards() {
 function dealerTurn() {
     var value = getSumOfValues(dealerCards)
     if(value > 21) {
-        setTimeout(showWinningScreen(true), 3000)
+        setTimeout(showWinningScreen(1), 3000)
     } else if(value < 17) {
         dealerCards.pushCard(startDeck.popCard())
         setTimeout(() => {
@@ -58,9 +69,17 @@ function dealerTurn() {
         }, 3000)
     } else {
         if(getSumOfValues(playerCards) > value) {
-            setTimeout(showWinningScreen(true), 3000)
+            setTimeout(showWinningScreen(1), 3000)
+        } else if(getSumOfValues(playerCards) == value) {
+            if(playerCards.length == dealerCards.length){
+                setTimeout(showWinningScreen(0), 3000)
+            } else if(playerCards.length == 2 && getSumOfValues(playerCards) == 21){
+                setTimeout(showWinningScreen(1), 3000)
+            } else {
+                setTimeout(showWinningScreen(0), 3000)
+            }
         } else {
-            setTimeout(showWinningScreen(false), 3000)
+            setTimeout(showWinningScreen(2), 3000)
         }
     }
 }
@@ -86,7 +105,10 @@ function getSumOfValues(deck) {
 function checkPlayerSum() {
     var value = getSumOfValues(playerCards)
     if(value > 21) {
-        showWinningScreen(false)
+        setTimeout(() => {
+            printDealerCards(true)
+            showWinningScreen(2)
+        }, 3000)
     } else if(value < 21) {
         addClickToPlayerButtons()
     } else {
@@ -97,13 +119,15 @@ function checkPlayerSum() {
 
 /**
  * Shows winningScreen for the game
- * @param {boolean} playerWon true if player won, false if enemy won
+ * @param {int} playerWon 1 if player won, 2 if dealer won and 0 if draw
  */
  function showWinningScreen(playerWon) {
-    if(playerWon){
+     if(playerWon == 0) {
+      $(`#winningScreen`).text("Draw!").show()
+     } else if(playerWon == 1){
       $(`#winningScreen`).text("Bravo! You won the Game!").show()
     } else {
-      $(`#winningScreen`).text(`Dealer has won the Game`).show()
+      $(`#winningScreen`).text(`Dealer has won the Game!`).show()
     }
 }
 
@@ -112,7 +136,6 @@ function checkPlayerSum() {
 */
 function hideWinningScreen() {
     $(`#winningScreen`).hide()
-    addClickToDealButton()
   }
 
 /**
@@ -202,9 +225,11 @@ function removeClickToPlayerButtons() {
 * Starts game and hides winnigScreen onClick
 */
 $(document).ready(() => {
-    start()
+    init()
+    addClickToDealButton()
     $(`#hit, #stand`).prop(`disabled`, true)
     $(`#winningScreen`).click(() => {
-        start()
+        hideWinningScreen()
+        addClickToDealButton()
     })
 })
