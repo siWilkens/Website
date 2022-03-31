@@ -32,10 +32,6 @@ function init() {
 * Starts round by dealing two cards to each player and dealer
 */
 function dealCards() {
-    if(startDeck.length > 10) {
-        startDeck.new312Deck()
-        startDeck.shuffle()
-    }
     playerCards = new Deck()
     dealerCards = new Deck()
     playerCards.pushCard(startDeck.popCard())
@@ -49,6 +45,10 @@ function dealCards() {
             dealerTurn()
     } else {
         addClickToPlayerButtons()
+    }
+    if(startDeck.length < 10) {
+        startDeck.new312Deck()
+        startDeck.shuffle()
     }
 }
 

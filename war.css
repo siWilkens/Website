@@ -33,7 +33,7 @@ body {
 #enemy {
     position:absolute;
     top: 20%;
-    left: 50%;
+    left: 40%;
     transform: translate(-50%,-50%);
     min-width: 300px;
 }
@@ -59,7 +59,7 @@ body {
 
 #player {
     position:absolute;
-    left: 50%;
+    left: 40%;
     bottom: 20%;
     transform: translate(-50%,-50%);
     min-width: 300px;
@@ -95,7 +95,7 @@ body {
     border-radius: 100%;
     position:absolute;
     top: 50%;
-    left: 50%;
+    left: 40%;
     transform: translate(-50%,-50%);
 }
 
